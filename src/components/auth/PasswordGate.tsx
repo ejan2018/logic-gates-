@@ -186,7 +186,7 @@ export default function PasswordGate() {
           }}
         >
           Enter the 4-character access code to continue <br />
-          <strong>"Write the Initialise word of Pakistan International School Al-khobar"</strong>
+          "Write the Initialise word of Pakistan International School Al-khobar"
         </p>
 
         {/* Input boxes */}
