@@ -7,7 +7,7 @@ import { GlitchText } from '@/components/ui/glitch-text';
 
 const PASSWORD_LENGTH = 4;
 
-export function PasswordGate() {
+export default function PasswordGate() {
   const authenticate = useAuthStore((s) => s.authenticate);
   const attempts = useAuthStore((s) => s.attempts);
   const [values, setValues] = useState<string[]>(['', '', '', '']);
@@ -37,8 +37,19 @@ export function PasswordGate() {
   };
 
   const updateValue = (idx: number, val: string) => {
+    // If user is clearing the input (e.g. backspace/delete), update state immediately
+    if (val === '') {
+      setValues((v) => {
+        const nv = [...v];
+        nv[idx] = '';
+        return nv;
+      });
+      return;
+    }
+
     const char = val.toUpperCase().slice(-1);
     if (!/[A-Z0-9]/.test(char)) return;
+
     setError(false);
     setValues((v) => {
       const nv = [...v];
@@ -49,13 +60,15 @@ export function PasswordGate() {
       }
       return nv;
     });
+
+    // Move focus to next input field
     if (idx < PASSWORD_LENGTH - 1) {
       inputRefs.current[idx + 1]?.focus();
     }
   };
 
   const handleKeyDown = (idx: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Only handle Backspace when the current input is empty — to jump back
+    // Jump back to the previous input if Backspace is pressed on an empty field
     if (e.key === 'Backspace' && !values[idx] && idx > 0) {
       e.preventDefault();
       const nv = [...values];
@@ -115,7 +128,8 @@ export function PasswordGate() {
           animation: shake ? 'shake 0.4s ease-in-out' : 'fadeUp 0.6s ease-out',
         }}
       >
-        <style>{`
+        {/* Fixed CSS injection for Next.js/React hydration */}
+        <style dangerouslySetInnerHTML={{ __html: `
           @keyframes shake {
             0%, 100% { transform: translateX(0); }
             20% { transform: translateX(-10px); }
@@ -131,7 +145,7 @@ export function PasswordGate() {
             0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
             50% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
           }
-        `}</style>
+        `}} />
 
         {/* Logo — animated neon circuit SVG */}
         <div
@@ -144,7 +158,6 @@ export function PasswordGate() {
             justifyContent: 'center',
           }}
         >
-          {/* Animated neon logo */}
           <img
             src="/logo.svg"
             alt="Logic Simulator Logo"
@@ -163,6 +176,7 @@ export function PasswordGate() {
         >
           <GlitchText text="LOGIC SIMULATOR" className="text-lg sm:text-xl" />
         </h1>
+        
         <p
           style={{
             color: 'rgba(199, 210, 254, 0.85)',
@@ -172,8 +186,8 @@ export function PasswordGate() {
           }}
         >
           Enter the 4-character access code to continue <br />
-  <strong>"Write the Initialise word of Pakistan International School Al-khobar"</strong>
-</p>
+          <strong>"Write the Initialise word of Pakistan International School Al-khobar"</strong>
+        </p>
 
         {/* Input boxes */}
         <div
