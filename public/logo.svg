@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 250 250" xml:space="preserve">
-  <g id="Simulator-Logo" transform="translate(-105, -5)">
-    
-    <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 500 270" xml:space="preserve">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g id="Simulator-Logo" transform="translate(0, 10)">
+    <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
       <path d="M 170,40 L 190,40 C 205,40 215,50 215,60 C 215,70 205,80 190,80 L 170,80 Z" />
       <path d="M 170,120 L 190,120 C 205,120 215,130 215,140 C 215,150 205,160 190,160 L 170,160 Z" />
       <path d="M 170,60 L 150,60 L 150,90 L 135,90 L 131,80 L 127,110 L 123,70 L 119,100 L 115,90 L 100,90" />
@@ -21,20 +30,20 @@
         values="#00f2fe; #4facfe; #00ff87; #fed373; #ff0844; #00f2fe" />
     </g>
 
-    <g>
+    <g filter="url(#glow)">
       <circle cx="255" cy="95" r="3.5" />
       <circle cx="265" cy="120" r="3.5" />
-      <text x="250" y="200" text-anchor="middle" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-weight="800" font-size="25px" letter-spacing="1px">
-        LOGIC SIMULATOR
+      <text x="250" y="210" text-anchor="middle" font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-weight="800" font-size="24px" letter-spacing="2px">
+        LOGIC GATE SIMULATOR
       </text>
 
       <animate attributeName="fill" dur="10s" repeatCount="indefinite"
         values="#00f2fe; #4facfe; #00ff87; #fed373; #ff0844; #00f2fe" />
     </g>
 
-    <g font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-weight="800" font-size="16px" letter-spacing="3px">
+    <g font-family="'Segoe UI', -apple-system, Roboto, sans-serif" font-weight="700" font-size="14px" letter-spacing="4px">
       
-      <text x="250" y="230" text-anchor="middle" fill="#9d4edd">
+      <text x="250" y="240" text-anchor="middle" fill="#9d4edd">
         BY AALIYAN
         <animate attributeName="dx" dur="2s" repeatCount="indefinite"
           values="0; 0; 4; -3; 0; 2; 0" keyTimes="0; 0.7; 0.73; 0.76; 0.79; 0.82; 1" />
@@ -42,7 +51,7 @@
           values="0; 0; 0.9; 0.2; 0.8; 0; 0" keyTimes="0; 0.7; 0.73; 0.76; 0.79; 0.82; 1" />
       </text>
 
-      <text x="250" y="230" text-anchor="middle" fill="#00f2fe">
+      <text x="250" y="240" text-anchor="middle" fill="#00f2fe" filter="url(#glow)">
         BY AALIYAN
         <animate attributeName="dx" dur="2s" repeatCount="indefinite"
           values="0; 0; -4; 3; -2; 0; 0" keyTimes="0; 0.68; 0.71; 0.74; 0.77; 0.8; 1" />
@@ -50,11 +59,13 @@
           values="0; 0; 0.9; 0.4; 0.7; 0; 0" keyTimes="0; 0.68; 0.71; 0.74; 0.77; 0.8; 1" />
       </text>
 
-      <text x="250" y="230" text-anchor="middle">
+      <text x="250" y="240" text-anchor="middle">
         BY AALIYAN
+        
         <animate attributeName="fill" dur="2s" repeatCount="indefinite"
           values="#00f2fe; #00f2fe; #000000; #9d4edd; #00f2fe; #000000; #00f2fe; #00f2fe" 
           keyTimes="0; 0.68; 0.71; 0.74; 0.77; 0.8; 0.83; 1" />
+          
         <animate attributeName="dy" dur="2s" repeatCount="indefinite"
           values="0; 0; -1; 2; -2; 0; 0" keyTimes="0; 0.68; 0.72; 0.75; 0.78; 0.82; 1" />
       </text>
